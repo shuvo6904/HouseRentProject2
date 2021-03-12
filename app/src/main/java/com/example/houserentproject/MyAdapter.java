@@ -1,6 +1,7 @@
 package com.example.houserentproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,17 @@ public class MyAdapter extends RecyclerView.Adapter<HomePageViewHolder>{
         holder.imageView.setImageResource(myHomePageDataList.get(position).getImage());
         holder.mRentAmount.setText(myHomePageDataList.get(position).getRentAmount());
         holder.mLocation.setText(myHomePageDataList.get(position).getLocation());
+
+        holder.mCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mcontext, DetailsActivity.class);
+                intent.putExtra("Image",myHomePageDataList.get(holder.getAdapterPosition()).getImage());
+                intent.putExtra("RentedAmount", myHomePageDataList.get(holder.getAdapterPosition()).getRentAmount());
+                intent.putExtra("Location", myHomePageDataList.get(holder.getAdapterPosition()).getLocation());
+                mcontext.startActivity(intent);
+            }
+        });
     }
 
     @Override

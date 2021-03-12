@@ -9,13 +9,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private FloatingActionButton floatingActionButton;
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle toggle;
@@ -31,9 +37,12 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Home Page");
 
+        floatingActionButton = findViewById(R.id.fabId);
+
         drawerLayout = findViewById(R.id.drawerId);
         toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
         drawerLayout.addDrawerListener(toggle);
+        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black));
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -68,5 +77,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void faButton(View view) {
+        Toast.makeText(MainActivity.this, "Clicked Fab", Toast.LENGTH_SHORT).show();
     }
 }
