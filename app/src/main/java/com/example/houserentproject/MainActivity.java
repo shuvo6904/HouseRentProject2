@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -80,6 +81,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void faButton(View view) {
-        Toast.makeText(MainActivity.this, "Clicked Fab", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(MainActivity.this, PostActivity.class));
     }
 }
