@@ -32,7 +32,7 @@ public class MyAdapter extends RecyclerView.Adapter<HomePageViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull HomePageViewHolder holder, int position) {
-        holder.imageView.setImageResource(myHomePageDataList.get(position).getImage());
+       // holder.imageView.setImageResource(myHomePageDataList.get(position).getImage());
         holder.mRentAmount.setText(myHomePageDataList.get(position).getRentAmount());
         holder.mLocation.setText(myHomePageDataList.get(position).getLocation());
 

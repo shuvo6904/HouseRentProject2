@@ -3,9 +3,9 @@ package com.example.houserentproject;
 public class HomePageData {
     private String rentAmount;
     private String location;
-    private int image;
+    private String image;
 
-    public HomePageData(String rentAmount, String location, int image) {
+    public HomePageData(String rentAmount, String location, String image) {
         this.rentAmount = rentAmount;
         this.location = location;
 
@@ -20,7 +20,7 @@ public class HomePageData {
         return location;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 }

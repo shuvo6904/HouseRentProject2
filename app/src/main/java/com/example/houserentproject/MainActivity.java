@@ -54,17 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         myHomePageDataList = new ArrayList<>();
 
-        mhomePageData = new HomePageData("10000 BDT", "Maijdee",R.drawable.image1);
-        myHomePageDataList.add(mhomePageData);
 
-        mhomePageData = new HomePageData("11000 BDT", "Sonapur",R.drawable.image2);
-        myHomePageDataList.add(mhomePageData);
-
-        mhomePageData = new HomePageData("9000 BDT", "Banglabazar",R.drawable.image3);
-        myHomePageDataList.add(mhomePageData);
-
-        mhomePageData = new HomePageData("9500 BDT", "Maijdee Bazar",R.drawable.image4);
-        myHomePageDataList.add(mhomePageData);
 
         MyAdapter myAdapter = new MyAdapter(MainActivity.this, myHomePageDataList);
         mRecyclerView.setAdapter(myAdapter);

@@ -33,18 +33,17 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabId"
-            android:onClick="faButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_marginBottom="120dp"
-            android:layout_marginRight="45dp"
-            app:fabSize="mini"
-            app:rippleColor="@color/background"
-            android:backgroundTint="#BF360C"
-            android:src="@drawable/ic_baseline_add_business_24"/>
+            android:layout_margin="40dp"
+            android:backgroundTint="@color/purple_500"
+            android:onClick="faButton"
+            android:src="@drawable/ic_baseline_add"
+            app:rippleColor="@color/white" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 
 
 
