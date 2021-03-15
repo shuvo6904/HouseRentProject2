@@ -30,7 +30,7 @@ public class PostActivity extends AppCompatActivity {
 
     ImageView homeImage;
     Uri uri;
-    TextView txtRentedAmount, txtLocation, txtDescription;
+    TextView txtRentedAmount, txtLocation;
 
     String imageUrl;
 
@@ -43,7 +43,6 @@ public class PostActivity extends AppCompatActivity {
 
         txtRentedAmount = (EditText) findViewById(R.id.rentedAmountId);
         txtLocation = (EditText) findViewById(R.id.homeLocationId);
-        txtDescription = (EditText) findViewById(R.id.homeDescriptionId);
     }
 
     public void btnSelectImage(View view) {

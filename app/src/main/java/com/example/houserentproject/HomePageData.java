@@ -5,6 +5,10 @@ public class HomePageData {
     private String location;
     private String image;
 
+    public HomePageData() {
+
+    }
+
     public HomePageData(String rentAmount, String location, String image) {
         this.rentAmount = rentAmount;
         this.location = location;

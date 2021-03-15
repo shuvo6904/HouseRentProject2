@@ -12,12 +12,15 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<HomePageViewHolder>{
 
     private Context mcontext;
     private List<HomePageData> myHomePageDataList;
+
 
     public MyAdapter(Context mcontext, List<HomePageData> myHomePageDataList) {
         this.mcontext = mcontext;
@@ -32,7 +35,11 @@ public class MyAdapter extends RecyclerView.Adapter<HomePageViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull HomePageViewHolder holder, int position) {
-       // holder.imageView.setImageResource(myHomePageDataList.get(position).getImage());
+
+        Glide.with(mcontext)
+                .load(myHomePageDataList.get(position).getImage())
+                .into(holder.imageView);
+        // holder.imageView.setImageResource(myHomePageDataList.get(position).getImage());
         holder.mRentAmount.setText(myHomePageDataList.get(position).getRentAmount());
         holder.mLocation.setText(myHomePageDataList.get(position).getLocation());
 

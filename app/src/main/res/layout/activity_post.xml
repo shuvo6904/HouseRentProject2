@@ -60,24 +60,6 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:hint="Description of Your Home"
-            android:layout_margin="10dp"
-            app:counterEnabled="true"
-            app:counterMaxLength="100"
-            app:endIconMode="clear_text"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-            <EditText
-                android:id="@+id/homeDescriptionId"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="60dp"
