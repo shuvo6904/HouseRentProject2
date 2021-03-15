@@ -2,21 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="5dp"
         android:id="@+id/myCardViewId"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="300dp"
         app:cardElevation="3dp"
         android:layout_margin="10dp"
         app:cardUseCompatPadding="true">
 
         <LinearLayout
-            android:background="@color/background"
             android:weightSum="6"
             android:orientation="vertical"
             android:layout_width="match_parent"

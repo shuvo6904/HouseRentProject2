@@ -19,30 +19,32 @@
 
     </com.google.android.material.navigation.NavigationView>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewId"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="vertical">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+     <com.google.android.material.floatingactionbutton.FloatingActionButton
+         android:id="@+id/fabId"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="bottom|end"
+         android:layout_margin="16dp"
+         android:layout_alignParentEnd="true"
+         android:layout_alignParentBottom="true"
+         android:backgroundTint="@color/purple_500"
+         android:onClick="faButton"
+         android:src="@drawable/ic_baseline_add"
+         app:rippleColor="@color/white" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="40dp"
-            android:backgroundTint="@color/purple_500"
-            android:onClick="faButton"
-            android:src="@drawable/ic_baseline_add"
-            app:rippleColor="@color/white" />
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </RelativeLayout>
 
 
 
