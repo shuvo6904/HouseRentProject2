@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 public class DetailsActivity extends AppCompatActivity {
 
     TextView rentedAmount ,homeLocation;
@@ -25,7 +27,11 @@ public class DetailsActivity extends AppCompatActivity {
         if (mBundle != null){
             rentedAmount.setText(mBundle.getString("RentedAmount"));
             homeLocation.setText(mBundle.getString("Location"));
-            homeImage.setImageResource(mBundle.getInt("Image"));
+            //homeImage.setImageResource(mBundle.getInt("Image"));
+
+            Glide.with(this)
+                    .load(mBundle.getString("Image"))
+                    .into(homeImage);
         }
     }
 }

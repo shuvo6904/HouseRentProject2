@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -45,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        getSupportActionBar().setTitle("Home Page");
 
         floatingActionButton = findViewById(R.id.fabId);
 
@@ -106,13 +106,34 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-        return super.onOptionsItemSelected(item);
+        switch (item.getItemId()){
+            case R.id.menuFilterId:
+                //Toast.makeText(MainActivity.this, "Clicked Filter", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, FilterActivity.class));
+                return true;
+
+            case R.id.menuLogoutId:
+                Toast.makeText(MainActivity.this, "Clicked Logout", Toast.LENGTH_SHORT).show();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+
     }
 
     public void faButton(View view) {
         startActivity(new Intent(MainActivity.this, PostActivity.class));
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main_activity,menu);
+
+        return true;
+    }
 
 }

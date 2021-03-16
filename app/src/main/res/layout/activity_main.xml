@@ -8,17 +8,6 @@
     tools:openDrawer="start"
     tools:context=".MainActivity">
 
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/navigationId"
-        android:background="@color/white"
-        app:menu="@menu/nav_menu_item"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header">
-
-    </com.google.android.material.navigation.NavigationView>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -45,6 +34,17 @@
          app:rippleColor="@color/white" />
 
     </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/navigationId"
+        android:background="@color/white"
+        app:menu="@menu/nav_menu_item"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header">
+
+    </com.google.android.material.navigation.NavigationView>
 
 
 
