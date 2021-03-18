@@ -17,10 +17,29 @@
         android:layout_marginTop="50dp">
 
         <EditText
+            android:id="@+id/regFullNameId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Full Name"
             android:inputType="text"
+            android:textSize="20sp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundMode="outline"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:endIconMode="clear_text"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/regPhnNumId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:inputType="number"
             android:textSize="20sp"/>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -34,6 +53,7 @@
         app:endIconMode="clear_text">
 
         <EditText
+            android:id="@+id/regEmailId"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,10 +68,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:boxBackgroundMode="outline"
-        app:passwordToggleEnabled="true"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <EditText
+            android:id="@+id/regPassId"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,10 +86,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:boxBackgroundMode="outline"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:passwordToggleEnabled="true">
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <EditText
+            android:id="@+id/regConPassId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirm Password"
@@ -91,6 +111,7 @@
         android:onClick="tvAlreadyRegistered"/>
 
     <Button
+        android:onClick="register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Register"
