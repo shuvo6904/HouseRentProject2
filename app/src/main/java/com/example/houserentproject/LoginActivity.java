@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     AlertDialog.Builder reset_alert;
     LayoutInflater inflater;
+    ProgressBar loginProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,8 @@ public class LoginActivity extends AppCompatActivity {
 
         reset_alert = new AlertDialog.Builder(this);
         inflater = this.getLayoutInflater();
+
+        loginProgressBar = findViewById(R.id.loginProgressBarId);
     }
 
     public void buttonRegister(View view) {
@@ -57,6 +61,13 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
+        if (password.length() < 6){
+            password.setError("Password Must be >= 6 Characters");
+            return;
+        }
+
+        loginProgressBar.setVisibility(View.VISIBLE);
+
         firebaseAuth.signInWithEmailAndPassword(username.getText().toString(), password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
@@ -69,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                loginProgressBar.setVisibility(View.GONE);
             }
         });
 

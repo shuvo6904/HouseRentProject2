@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -15,12 +16,20 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    public static final String TAG = "TAG";
     EditText regFullName, regPhnNum, regEmail, regPass, regConPass;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
+    FirebaseFirestore fStore;
+    String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +43,9 @@ public class RegisterActivity extends AppCompatActivity {
         regConPass = findViewById(R.id.regConPassId);
         fAuth = FirebaseAuth.getInstance();
         progressBar = findViewById(R.id.regProgressBarId);
+
+        fStore = FirebaseFirestore.getInstance();
+
     }
 
     public void tvAlreadyRegistered(View view) {
@@ -70,6 +82,11 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
+        if (strPass.length() < 6){
+            regPass.setError("Password Must be >= 6 Characters");
+            return;
+        }
+
         if (strConPass.isEmpty()){
             regConPass.setError("Confirm Password is Required");
             return;
@@ -80,11 +97,27 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        Toast.makeText(RegisterActivity.this, "Data Validated", Toast.LENGTH_SHORT).show();
+        progressBar.setVisibility(View.VISIBLE);
 
         fAuth.createUserWithEmailAndPassword(strEmail, strPass).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
+
+                userID = fAuth.getCurrentUser().getUid();
+
+                DocumentReference documentReference = fStore.collection("users").document(userID);
+                Map<String,Object> user = new HashMap<>();
+                user.put("fName",strFullName);
+                user.put("email",strEmail);
+                user.put("PhnNumber",strPhnNum);
+                documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                        Log.d(TAG, "User Profile is Created for" + userID);
+
+                    }
+                });
 
                 startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                 finish();
@@ -94,6 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(RegisterActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
 
             }
         });
