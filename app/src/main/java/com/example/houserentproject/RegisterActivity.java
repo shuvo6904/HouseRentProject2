@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.common.internal.Objects;
@@ -19,6 +20,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     EditText regFullName, regPhnNum, regEmail, regPass, regConPass;
     FirebaseAuth fAuth;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
         regPass = findViewById(R.id.regPassId);
         regConPass = findViewById(R.id.regConPassId);
         fAuth = FirebaseAuth.getInstance();
+        progressBar = findViewById(R.id.regProgressBarId);
     }
 
     public void tvAlreadyRegistered(View view) {
@@ -41,11 +44,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void register(View view) {
 
-        String strFullName = regFullName.getText().toString();
-        String strPhnNum = regPhnNum.getText().toString();
-        String strEmail = regEmail.getText().toString();
-        String strPass = regPass.getText().toString();
-        String strConPass = regConPass.getText().toString();
+        String strFullName = regFullName.getText().toString().trim();
+        String strPhnNum = regPhnNum.getText().toString().trim();
+        String strEmail = regEmail.getText().toString().trim();
+        String strPass = regPass.getText().toString().trim();
+        String strConPass = regConPass.getText().toString().trim();
 
         if (strFullName.isEmpty()){
             regFullName.setError("Full Name is Required");

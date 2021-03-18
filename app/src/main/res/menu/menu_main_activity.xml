@@ -15,4 +15,9 @@
         android:title="@string/menu_logout"
         />
 
+    <item
+        android:id="@+id/menuResetPassId"
+        android:title="Reset Password"
+        />
+
 </menu>

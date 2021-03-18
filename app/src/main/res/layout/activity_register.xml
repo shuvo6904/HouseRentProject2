@@ -120,4 +120,12 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/button_rounded"/>
 
+    <ProgressBar
+        android:visibility="invisible"
+        android:layout_marginTop="20dp"
+        android:id="@+id/regProgressBarId"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

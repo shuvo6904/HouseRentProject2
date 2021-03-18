@@ -119,6 +119,9 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 return true;
 
+            case R.id.menuResetPassId:
+                startActivity(new Intent(getApplicationContext(), ResetPassActivity.class));
+
             default:
                 return super.onOptionsItemSelected(item);
 

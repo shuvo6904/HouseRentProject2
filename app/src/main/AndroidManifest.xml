@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HouseRentProject">
-        <activity android:name=".FilterActivity"></activity>
+        <activity android:name=".ResetPassActivity"></activity>
+        <activity android:name=".FilterActivity" />
         <activity android:name=".PostActivity" />
         <activity android:name=".DetailsActivity" />
         <activity android:name=".MainActivity" />
