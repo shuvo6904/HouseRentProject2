@@ -1,6 +1,7 @@
 package com.example.houserentproject;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -16,20 +17,34 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView navHeaderUsername, navHeaderEmail, navHeaderPhone;
+    View hView;
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+
+    String userId;
 
     private FloatingActionButton floatingActionButton;
 
@@ -57,6 +72,27 @@ public class MainActivity extends AppCompatActivity {
         toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.black));
         toggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        NavigationView navigationView = findViewById(R.id.navigationId);
+        hView = navigationView.getHeaderView(0);
+
+        navHeaderUsername = hView.findViewById(R.id.navHeaderUserNameId);
+        navHeaderEmail = hView.findViewById(R.id.navHeaderEmailId);
+        navHeaderPhone= hView.findViewById(R.id.navHeaderPhoneId);
+
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+
+        userId = fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = fStore.collection("users").document(userId);
+        documentReference.addSnapshotListener(this,new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                navHeaderUsername.setText(value.getString("fName"));
+                navHeaderEmail.setText(value.getString("email"));
+                navHeaderPhone.setText(value.getString("PhnNumber"));
+            }
+        });
 
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerViewId);
 
@@ -96,6 +132,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
 
 
     }
