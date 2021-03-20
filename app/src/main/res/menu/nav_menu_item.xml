@@ -15,6 +15,11 @@
             android:icon="@drawable/ic_baseline_person_24"/>
 
         <item
+            android:id="@+id/accountVeriMenuId"
+            android:title="Account Verification"
+            android:icon="@drawable/ic_baseline_verified_24"/>
+
+        <item
             android:id="@+id/messageMenuId"
             android:title="Message"
             android:icon="@drawable/ic_baseline_message"/>

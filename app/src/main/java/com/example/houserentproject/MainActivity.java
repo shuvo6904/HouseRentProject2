@@ -37,7 +37,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView navHeaderUsername, navHeaderEmail, navHeaderPhone;
     View hView;
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         NavigationView navigationView = findViewById(R.id.navigationId);
+        navigationView.setNavigationItemSelectedListener(this);
         hView = navigationView.getHeaderView(0);
 
         navHeaderUsername = hView.findViewById(R.id.navHeaderUserNameId);
@@ -180,4 +181,18 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.homeMenuId){
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        }
+
+        if (item.getItemId() == R.id.accountVeriMenuId){
+            startActivity(new Intent(this, AccountVerification.class));
+            finish();
+        }
+        return false;
+    }
 }
