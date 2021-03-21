@@ -16,6 +16,7 @@
         android:layout_height="200dp"/>
 
     <Button
+        android:onClick="chooseFrontImageBtn"
         android:id="@+id/chooseFrontImageBtnId"
         android:text="Choose Image"
         android:layout_width="match_parent"
@@ -29,12 +30,14 @@
         android:layout_height="200dp"/>
 
     <Button
+        android:onClick="chooseBackImageBtn"
         android:id="@+id/chooseBacktImageBtnId"
         android:text="Choose Image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
+        android:onClick="uploadVeriImageBtn"
         android:id="@+id/uploadVeriImageBtnId"
         android:text="Upload"
         android:layout_width="match_parent"

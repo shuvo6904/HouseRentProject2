@@ -64,36 +64,43 @@ public class RegisterActivity extends AppCompatActivity {
 
         if (strFullName.isEmpty()){
             regFullName.setError("Full Name is Required");
+            regFullName.requestFocus();
             return;
         }
 
         if (strPhnNum.isEmpty()){
             regPhnNum.setError("Phone Number is Required");
+            regPhnNum.requestFocus();
             return;
         }
 
         if (strEmail.isEmpty()){
             regEmail.setError("Email is Required");
+            regEmail.requestFocus();
             return;
         }
 
         if (strPass.isEmpty()){
             regPass.setError("Password is Required");
+            regPass.requestFocus();
             return;
         }
 
         if (strPass.length() < 6){
             regPass.setError("Password Must be >= 6 Characters");
+            regPass.requestFocus();
             return;
         }
 
         if (strConPass.isEmpty()){
             regConPass.setError("Confirm Password is Required");
+            regConPass.requestFocus();
             return;
         }
 
         if (!strPass.equals(strConPass)){
             regConPass.setError("Password Don't Match");
+            regConPass.requestFocus();
             return;
         }
 

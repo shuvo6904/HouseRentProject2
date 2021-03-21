@@ -53,16 +53,19 @@ public class LoginActivity extends AppCompatActivity {
 
         if (username.getText().toString().isEmpty()){
             username.setError("Email is Missing");
+            username.requestFocus();
             return;
         }
 
         if (password.getText().toString().isEmpty()){
             password.setError("Password is Missing");
+            password.requestFocus();
             return;
         }
 
         if (password.length() < 6){
             password.setError("Password Must be >= 6 Characters");
+            password.requestFocus();
             return;
         }
 
