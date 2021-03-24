@@ -25,8 +25,8 @@ public class DetailsActivity extends AppCompatActivity {
         Bundle mBundle = getIntent().getExtras();
 
         if (mBundle != null){
-            rentedAmount.setText(mBundle.getString("RentedAmount"));
-            homeLocation.setText(mBundle.getString("Location"));
+            rentedAmount.setText("Rented Amount : " + mBundle.getString("RentedAmount"));
+            homeLocation.setText("Location : "+ mBundle.getString("Location"));
             //homeImage.setImageResource(mBundle.getInt("Image"));
 
             Glide.with(this)

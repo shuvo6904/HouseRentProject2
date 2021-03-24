@@ -114,6 +114,7 @@ public class AccountVerification extends AppCompatActivity {
 
     private void uploadFrontImage() {
 
+
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Front Side Uploading...");
         progressDialog.show();

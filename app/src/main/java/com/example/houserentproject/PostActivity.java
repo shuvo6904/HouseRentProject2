@@ -99,10 +99,29 @@ public class PostActivity extends AppCompatActivity {
 
     public void btnSubmitId(View view) {
 
-        uploadImage();
+        if (txtRentedAmount.getText().toString().isEmpty()){
+            txtRentedAmount.setError("Required Field");
+            txtRentedAmount.requestFocus();
+            return;
+        }
+
+        if (txtLocation.getText().toString().isEmpty()){
+            txtLocation.setError("Required Field");
+            txtLocation.requestFocus();
+            return;
+        }
+
+       // if (homeImage.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.ic_baseline_image_24).getConstantState()) {
+            //your code for stopping uploading here!
+
+         // }
+            uploadImage();
+
+
     }
 
     public void submitData(){
+
 
         HomePageData homePageData = new HomePageData(
                 txtRentedAmount.getText().toString(),
