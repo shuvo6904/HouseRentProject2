@@ -11,25 +11,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="30dp"
-        android:orientation="vertical"
-        android:background="@color/background">
+        android:orientation="vertical">
 
-        <ImageView
+        <com.google.android.material.textfield.TextInputLayout
+            android:background="@color/background"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_margin="10dp"
-            android:id="@+id/postHomeImageId"
-            android:src="@drawable/ic_baseline_image_24"
-            android:scaleType="centerCrop"/>
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            app:boxBackgroundMode="outline"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Select Image"
-            android:textSize="22sp"
-            android:textColor="#ffffff"
-            android:layout_marginTop="20dp"
-            android:onClick="btnSelectImage"/>
+        <Spinner
+            android:padding="10dp"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/loctionSpinnerId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+        </Spinner>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -51,7 +53,25 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="10dp"
+            android:id="@+id/postHomeImageId"
+            android:src="@drawable/ic_baseline_image_24"
+            android:scaleType="centerCrop"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Select Image"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:layout_marginTop="20dp"
+            android:onClick="btnSelectImage"/>
+
+
+       <!-- <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Location of Your Home"
@@ -67,8 +87,7 @@
                 android:layout_height="wrap_content"
                 />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
+        </com.google.android.material.textfield.TextInputLayout> -->
 
 
         <Button

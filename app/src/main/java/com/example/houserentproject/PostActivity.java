@@ -9,8 +9,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,9 +30,14 @@ import java.util.Calendar;
 
 public class PostActivity extends AppCompatActivity {
 
+    String[] locationSpinnerArray;
+    Spinner locationSpinner;
+
     ImageView homeImage;
     Uri uri;
-    TextView txtRentedAmount, txtLocation;
+    TextView txtRentedAmount;
+
+    //TextView txtLocation;
 
     String imageUrl;
 
@@ -39,10 +46,17 @@ public class PostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
 
+        locationSpinnerArray = getResources().getStringArray(R.array.location_spinner);
+        locationSpinner = (Spinner) findViewById(R.id.loctionSpinnerId);
+
+        ArrayAdapter<String> locaSpiArrayAdapter = new ArrayAdapter<>(PostActivity.this,R.layout.sample_location_spinner_view, R.id.sampleViewLocationSpinnerId, locationSpinnerArray);
+        locationSpinner.setAdapter(locaSpiArrayAdapter);
+
+
         homeImage = (ImageView) findViewById(R.id.postHomeImageId);
 
         txtRentedAmount = (EditText) findViewById(R.id.rentedAmountId);
-        txtLocation = (EditText) findViewById(R.id.homeLocationId);
+        //txtLocation = (EditText) findViewById(R.id.homeLocationId);
     }
 
     public void btnSelectImage(View view) {
@@ -105,16 +119,6 @@ public class PostActivity extends AppCompatActivity {
             return;
         }
 
-        if (txtLocation.getText().toString().isEmpty()){
-            txtLocation.setError("Required Field");
-            txtLocation.requestFocus();
-            return;
-        }
-
-       // if (homeImage.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.ic_baseline_image_24).getConstantState()) {
-            //your code for stopping uploading here!
-
-         // }
             uploadImage();
 
 
@@ -125,7 +129,8 @@ public class PostActivity extends AppCompatActivity {
 
         HomePageData homePageData = new HomePageData(
                 txtRentedAmount.getText().toString(),
-                txtLocation.getText().toString(),
+                //txtLocation.getText().toString(),
+                locationSpinner.getSelectedItem().toString(),
                 imageUrl
 
         );
