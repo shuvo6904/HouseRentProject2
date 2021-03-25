@@ -13,7 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,9 +34,9 @@ public class PostActivity extends AppCompatActivity {
 
     ImageView homeImage;
     Uri uri;
-    TextView txtRentedAmount;
+    EditText txtRentedAmount, txtBuildingName, txtFloorNumber, txtDetailsAddress;
 
-    //TextView txtLocation;
+    //EditText txtLocation;
 
     String imageUrl;
 
@@ -57,6 +56,10 @@ public class PostActivity extends AppCompatActivity {
 
         txtRentedAmount = (EditText) findViewById(R.id.rentedAmountId);
         //txtLocation = (EditText) findViewById(R.id.homeLocationId);
+        txtBuildingName = (EditText) findViewById(R.id.buildingNameId);
+        txtFloorNumber = (EditText) findViewById(R.id.floorNumberId);
+        txtDetailsAddress = (EditText) findViewById(R.id.detailsAddressId);
+
     }
 
     public void btnSelectImage(View view) {
@@ -131,8 +134,11 @@ public class PostActivity extends AppCompatActivity {
                 txtRentedAmount.getText().toString(),
                 //txtLocation.getText().toString(),
                 locationSpinner.getSelectedItem().toString(),
-                imageUrl
+                imageUrl,
 
+                txtBuildingName.getText().toString(),
+                txtFloorNumber.getText().toString(),
+                txtDetailsAddress.getText().toString()
         );
 
         String myCurrentDateTime = DateFormat.getDateTimeInstance()
