@@ -61,4 +61,13 @@
         android:text="Floor Number : "
         android:textSize="19sp"/>
 
+    <TextView
+        android:id="@+id/genderValueId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="20dp"
+        android:text="Gender Type : "
+        android:textSize="19sp"/>
+
 </LinearLayout>

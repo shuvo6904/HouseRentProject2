@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -36,7 +38,8 @@ public class PostActivity extends AppCompatActivity {
     Uri uri;
     EditText txtRentedAmount, txtBuildingName, txtFloorNumber, txtDetailsAddress;
 
-    //EditText txtLocation;
+    ChipGroup genderChipGroup;
+    Chip genderChip;
 
     String imageUrl;
 
@@ -46,7 +49,7 @@ public class PostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_post);
 
         locationSpinnerArray = getResources().getStringArray(R.array.location_spinner);
-        locationSpinner = (Spinner) findViewById(R.id.loctionSpinnerId);
+        locationSpinner = (Spinner) findViewById(R.id.locationSpinnerId);
 
         ArrayAdapter<String> locaSpiArrayAdapter = new ArrayAdapter<>(PostActivity.this,R.layout.sample_location_spinner_view, R.id.sampleViewLocationSpinnerId, locationSpinnerArray);
         locationSpinner.setAdapter(locaSpiArrayAdapter);
@@ -55,10 +58,11 @@ public class PostActivity extends AppCompatActivity {
         homeImage = (ImageView) findViewById(R.id.postHomeImageId);
 
         txtRentedAmount = (EditText) findViewById(R.id.rentedAmountId);
-        //txtLocation = (EditText) findViewById(R.id.homeLocationId);
+
         txtBuildingName = (EditText) findViewById(R.id.buildingNameId);
         txtFloorNumber = (EditText) findViewById(R.id.floorNumberId);
         txtDetailsAddress = (EditText) findViewById(R.id.detailsAddressId);
+        genderChipGroup = (ChipGroup) findViewById(R.id.genderChipGroupId);
 
     }
 
@@ -122,6 +126,11 @@ public class PostActivity extends AppCompatActivity {
             return;
         }
 
+        int genderSelectedId = genderChipGroup.getCheckedChipId();
+        genderChip = (Chip) findViewById(genderSelectedId);
+
+
+
             uploadImage();
 
 
@@ -132,13 +141,13 @@ public class PostActivity extends AppCompatActivity {
 
         HomePageData homePageData = new HomePageData(
                 txtRentedAmount.getText().toString(),
-                //txtLocation.getText().toString(),
                 locationSpinner.getSelectedItem().toString(),
                 imageUrl,
-
                 txtBuildingName.getText().toString(),
                 txtFloorNumber.getText().toString(),
-                txtDetailsAddress.getText().toString()
+                txtDetailsAddress.getText().toString(),
+                genderChip.getText().toString()
+
         );
 
         String myCurrentDateTime = DateFormat.getDateTimeInstance()

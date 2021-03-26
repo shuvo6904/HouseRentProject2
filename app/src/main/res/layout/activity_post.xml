@@ -21,9 +21,10 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <Spinner
+                android:layout_marginBottom="20dp"
                 android:padding="10dp"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/loctionSpinnerId"
+                android:layout_gravity="center"
+                android:id="@+id/locationSpinnerId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -124,14 +125,117 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="outline"
+                android:hint="Electricity Bill"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                app:endIconMode="clear_text"
+                android:layout_margin="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <EditText
+                    android:inputType="text"
+                    android:id="@+id/electricityBillId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="outline"
+                android:hint="Gas Bill"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                app:endIconMode="clear_text"
+                android:layout_margin="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <EditText
+                    android:inputType="text"
+                    android:id="@+id/gasBillId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="outline"
+                android:hint="Water Bill"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                app:endIconMode="clear_text"
+                android:layout_margin="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <EditText
+                    android:inputType="text"
+                    android:id="@+id/waterBillId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundMode="outline"
+                android:hint="House Made Bill"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                app:endIconMode="clear_text"
+                android:layout_margin="10dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <EditText
+                    android:inputType="text"
+                    android:id="@+id/houseMadeBillId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
 
         <ImageView
+            android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:layout_margin="10dp"
             android:id="@+id/postHomeImageId"
             android:src="@drawable/ic_baseline_image_24"
-            android:scaleType="centerCrop"/>
+            android:scaleType="fitXY"/>
 
         <Button
             android:layout_width="match_parent"
@@ -142,25 +246,46 @@
             android:layout_marginTop="20dp"
             android:onClick="btnSelectImage"/>
 
-
-       <!-- <com.google.android.material.textfield.TextInputLayout
+        <TextView
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginLeft="5dp"
+            android:text="Select Gender Type"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Location of Your Home"
-            app:counterEnabled="true"
-            app:counterMaxLength="20"
-            app:endIconMode="clear_text"
-            android:layout_margin="10dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            android:layout_height="wrap_content"/>
 
-            <EditText
-                android:id="@+id/homeLocationId"
-                android:layout_width="match_parent"
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/genderChipGroupId"
+            app:singleSelection="true"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/maleChipId"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                />
+                android:checked="true"
+                android:text="Male"/>
 
-        </com.google.android.material.textfield.TextInputLayout> -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/femaleChipId"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"/>
 
+            <com.google.android.material.chip.Chip
+                android:id="@+id/anyoneChipId"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anyone"/>
+
+        </com.google.android.material.chip.ChipGroup>
 
         <Button
             android:layout_width="match_parent"

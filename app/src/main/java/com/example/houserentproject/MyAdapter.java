@@ -54,6 +54,7 @@ public class MyAdapter extends RecyclerView.Adapter<HomePageViewHolder>{
                 intent.putExtra("BuildingName", myHomePageDataList.get(holder.getAdapterPosition()).getBuildingName());
                 intent.putExtra("FloorNumber", myHomePageDataList.get(holder.getAdapterPosition()).getFloorNumber());
                 intent.putExtra("DetailsAddress", myHomePageDataList.get(holder.getAdapterPosition()).getDetailsAddress());
+                intent.putExtra("GenderType", myHomePageDataList.get(holder.getAdapterPosition()).getValueOfGender());
                 mcontext.startActivity(intent);
             }
         });
