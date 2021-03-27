@@ -3,13 +3,16 @@ package com.example.houserentproject;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -21,6 +24,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -29,14 +33,15 @@ import com.google.firebase.storage.UploadTask;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-public class PostActivity extends AppCompatActivity {
+public class PostActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     String[] locationSpinnerArray;
     Spinner locationSpinner;
 
     ImageView homeImage;
     Uri uri;
-    EditText txtRentedAmount, txtBuildingName, txtFloorNumber, txtDetailsAddress;
+    EditText txtRentedAmount, txtBuildingName, txtFloorNumber, txtDetailsAddress, datePicker;
+    //TextInputLayout datePickerLayout;
 
     ChipGroup genderChipGroup, rentTypeChipGroup;
     Chip genderChip, rentTypeChip;
@@ -64,7 +69,32 @@ public class PostActivity extends AppCompatActivity {
         txtDetailsAddress = (EditText) findViewById(R.id.detailsAddressId);
         genderChipGroup = (ChipGroup) findViewById(R.id.genderChipGroupId);
         rentTypeChipGroup = (ChipGroup) findViewById(R.id.rentTypeChipGroupId);
+        datePicker = (EditText) findViewById(R.id.selectDateId);
+        //datePickerLayout = (TextInputLayout) findViewById(R.id.selectDateLayoutId);
 
+
+        datePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getSupportFragmentManager(), "date picker");
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        datePicker.setText(currentDateString);
     }
 
     public void btnSelectImage(View view) {
