@@ -38,8 +38,8 @@ public class PostActivity extends AppCompatActivity {
     Uri uri;
     EditText txtRentedAmount, txtBuildingName, txtFloorNumber, txtDetailsAddress;
 
-    ChipGroup genderChipGroup;
-    Chip genderChip;
+    ChipGroup genderChipGroup, rentTypeChipGroup;
+    Chip genderChip, rentTypeChip;
 
     String imageUrl;
 
@@ -63,6 +63,7 @@ public class PostActivity extends AppCompatActivity {
         txtFloorNumber = (EditText) findViewById(R.id.floorNumberId);
         txtDetailsAddress = (EditText) findViewById(R.id.detailsAddressId);
         genderChipGroup = (ChipGroup) findViewById(R.id.genderChipGroupId);
+        rentTypeChipGroup = (ChipGroup) findViewById(R.id.rentTypeChipGroupId);
 
     }
 
@@ -129,6 +130,9 @@ public class PostActivity extends AppCompatActivity {
         int genderSelectedId = genderChipGroup.getCheckedChipId();
         genderChip = (Chip) findViewById(genderSelectedId);
 
+        int rentTypeSelectedId = rentTypeChipGroup.getCheckedChipId();
+        rentTypeChip = (Chip) findViewById(rentTypeSelectedId);
+
 
 
             uploadImage();
@@ -146,7 +150,8 @@ public class PostActivity extends AppCompatActivity {
                 txtBuildingName.getText().toString(),
                 txtFloorNumber.getText().toString(),
                 txtDetailsAddress.getText().toString(),
-                genderChip.getText().toString()
+                genderChip.getText().toString(),
+                rentTypeChip.getText().toString()
 
         );
 

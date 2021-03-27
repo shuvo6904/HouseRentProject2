@@ -287,6 +287,61 @@
 
         </com.google.android.material.chip.ChipGroup>
 
+        <TextView
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginLeft="5dp"
+            android:text="Select What You Want to Rent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/rentTypeChipGroupId"
+            app:singleSelection="true"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/oneSeatChipId"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="1 Seat"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/twoSeatChipId"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 Seat"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/oneRoomChipId"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="One Room"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/fullFlatChipId"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full Flat"/>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/multipleSeatChipId"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="More Than 2 Seat"/>
+
+        </com.google.android.material.chip.ChipGroup>
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="60dp"

@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide;
 
 public class DetailsActivity extends AppCompatActivity {
 
-    TextView rentedAmount , homeLocation, buildingName, floorNumber, detailsAddress , genderValue;
+    TextView rentedAmount , homeLocation, buildingName, floorNumber, detailsAddress , genderValue, rentTypeValue;
     ImageView homeImage;
 
     @Override
@@ -27,6 +27,7 @@ public class DetailsActivity extends AppCompatActivity {
         floorNumber = (TextView) findViewById(R.id.floorNumberId);
         detailsAddress = (TextView) findViewById(R.id.detailsAddressId);
         genderValue = (TextView) findViewById(R.id.genderValueId);
+        rentTypeValue = (TextView) findViewById(R.id.rentTypeValueId);
 
         Bundle mBundle = getIntent().getExtras();
 
@@ -39,6 +40,7 @@ public class DetailsActivity extends AppCompatActivity {
             floorNumber.setText("Floor Number : " + mBundle.getString("FloorNumber"));
             detailsAddress.setText("Details Address : " + mBundle.getString("DetailsAddress"));
             genderValue.setText("Gender Type : " + mBundle.getString("GenderType"));
+            rentTypeValue.setText("Rent Type : " + mBundle.getString("RentType"));
 
             Glide.with(this)
                     .load(mBundle.getString("Image"))
