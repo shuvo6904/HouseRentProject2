@@ -56,6 +56,7 @@ public class MyAdapter extends RecyclerView.Adapter<HomePageViewHolder>{
                 intent.putExtra("DetailsAddress", myHomePageDataList.get(holder.getAdapterPosition()).getDetailsAddress());
                 intent.putExtra("GenderType", myHomePageDataList.get(holder.getAdapterPosition()).getValueOfGender());
                 intent.putExtra("RentType", myHomePageDataList.get(holder.getAdapterPosition()).getValueOfRentType());
+                intent.putExtra("DatePicker", myHomePageDataList.get(holder.getAdapterPosition()).getDatePick());
 
                 mcontext.startActivity(intent);
             }

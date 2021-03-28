@@ -181,7 +181,8 @@ public class PostActivity extends AppCompatActivity implements DatePickerDialog.
                 txtFloorNumber.getText().toString(),
                 txtDetailsAddress.getText().toString(),
                 genderChip.getText().toString(),
-                rentTypeChip.getText().toString()
+                rentTypeChip.getText().toString(),
+                datePicker.getText().toString()
 
         );
 

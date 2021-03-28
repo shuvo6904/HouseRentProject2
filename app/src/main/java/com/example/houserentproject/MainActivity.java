@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerViewId);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(MainActivity.this,1);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(MainActivity.this,2);
         mRecyclerView.setLayoutManager(gridLayoutManager);
 
         progressDialog = new ProgressDialog(this);
