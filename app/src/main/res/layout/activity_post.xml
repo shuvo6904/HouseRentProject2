@@ -254,23 +254,87 @@
         </LinearLayout>
 
 
-        <ImageView
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_margin="10dp"
-            android:id="@+id/postHomeImageId"
-            android:src="@drawable/ic_baseline_image_24"
-            android:scaleType="fitXY"/>
 
-        <Button
+        <LinearLayout
+            android:weightSum="2"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Select Image"
-            android:textSize="22sp"
-            android:textColor="#ffffff"
-            android:layout_marginTop="20dp"
-            android:onClick="btnSelectImage"/>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginLeft="10dp"
+                android:text="Elevator \nFacilities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
+                android:text="Generator Facilities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:weightSum="2"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioGroup
+                android:layout_weight="1"
+                android:id="@+id/elevatorRadioGroupId"
+                android:layout_margin="10dp"
+                android:checkedButton="@+id/elevatorAvailableId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/elevatorAvailableId"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Available"/>
+
+                <RadioButton
+                    android:id="@+id/elevatorNotAvailableId"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Not Available"/>
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:layout_weight="1"
+                android:id="@+id/generatorRadioGroupId"
+                android:layout_margin="10dp"
+                android:checkedButton="@+id/generatorAvailableId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/generatorAvailableId"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Available"/>
+
+                <RadioButton
+                    android:id="@+id/generatorNotAvailableId"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Not Available"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
 
         <TextView
             android:layout_marginTop="15dp"
@@ -367,6 +431,24 @@
                 android:text="More Than 2 Seat"/>
 
         </com.google.android.material.chip.ChipGroup>
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="25dp"
+            android:layout_height="50dp"
+            android:layout_margin="50dp"
+            android:id="@+id/postHomeImageId"
+            android:src="@drawable/ic_baseline_image_24"
+            android:scaleType="fitXY"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Select Image"
+            android:textSize="22sp"
+            android:textColor="#ffffff"
+            android:layout_marginTop="10dp"
+            android:onClick="btnSelectImage"/>
 
         <Button
             android:layout_width="match_parent"

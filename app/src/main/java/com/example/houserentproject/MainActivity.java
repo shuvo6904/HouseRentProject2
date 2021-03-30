@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         MyAdapter myAdapter = new MyAdapter(MainActivity.this, myHomePageDataList);
         mRecyclerView.setAdapter(myAdapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Data");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Data").child(userId);
 
         progressDialog.show();
         eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
