@@ -10,13 +10,15 @@ public class HomePageData {
     private String valueOfGender;
     private String valueOfRentType;
     private String datePick;
+    private String nameOfUser;
+    private String phnNumOfUser;
 
 
     public HomePageData() {
 
     }
 
-    public HomePageData(String rentAmount, String location, String image, String buildingName, String floorNumber, String detailsAddress, String valueOfGender, String valueOfRentType, String datePick) {
+    public HomePageData(String rentAmount, String location, String image, String buildingName, String floorNumber, String detailsAddress, String valueOfGender, String valueOfRentType, String datePick, String nameOfUser, String phnNumOfUser) {
         this.rentAmount = rentAmount;
         this.location = location;
         this.image = image;
@@ -26,6 +28,8 @@ public class HomePageData {
         this.valueOfGender = valueOfGender;
         this.valueOfRentType = valueOfRentType;
         this.datePick = datePick;
+        this.nameOfUser = nameOfUser;
+        this.phnNumOfUser = phnNumOfUser;
     }
 
     public String getRentAmount() {
@@ -58,5 +62,13 @@ public class HomePageData {
 
     public String getDatePick() {
         return datePick;
+    }
+
+    public String getNameOfUser() {
+        return nameOfUser;
+    }
+
+    public String getPhnNumOfUser() {
+        return phnNumOfUser;
     }
 }

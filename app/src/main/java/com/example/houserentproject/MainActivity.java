@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         MyAdapter myAdapter = new MyAdapter(MainActivity.this, myHomePageDataList);
         mRecyclerView.setAdapter(myAdapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Data").child(userId);
+        databaseReference = FirebaseDatabase.getInstance().getReference("Data");
 
         progressDialog.show();
         eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
@@ -118,8 +118,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 myHomePageDataList.clear();
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    HomePageData homePageData = dataSnapshot.getValue(HomePageData.class);
-                    myHomePageDataList.add(homePageData);
+
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+
+                        HomePageData homePageData = dataSnapshot1.getValue(HomePageData.class);
+                        myHomePageDataList.add(homePageData);
+
+                    }
+
                 }
 
                 myAdapter.notifyDataSetChanged();

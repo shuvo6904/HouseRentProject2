@@ -92,6 +92,14 @@
         android:text="Rent Date : "
         android:textSize="19sp"/>
 
+        <TextView
+            android:id="@+id/postedById"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Posted By "
+            android:padding="20dp"
+            android:textSize="19sp"/>
+
 
 
     </LinearLayout>

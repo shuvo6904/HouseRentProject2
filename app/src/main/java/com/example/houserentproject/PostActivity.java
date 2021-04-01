@@ -57,12 +57,17 @@ public class PostActivity extends AppCompatActivity implements DatePickerDialog.
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
 
-    String userId;
+    String userId, userName, userPhnNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+
+        fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+
+        userId = fAuth.getCurrentUser().getUid();
 
         locationSpinnerArray = getResources().getStringArray(R.array.location_spinner);
         locationSpinner = (Spinner) findViewById(R.id.locationSpinnerId);
@@ -91,6 +96,20 @@ public class PostActivity extends AppCompatActivity implements DatePickerDialog.
                 DialogFragment datePicker = new DatePickerFragment();
                 datePicker.show(getSupportFragmentManager(), "date picker");
 
+            }
+        });
+
+        userInfo();
+    }
+
+    private void userInfo() {
+
+        DocumentReference documentReference = fStore.collection("users").document(userId);
+        documentReference.addSnapshotListener(this,new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                userName = value.getString("fName");
+                userPhnNumber = value.getString("PhnNumber");
             }
         });
     }
@@ -192,14 +211,11 @@ public class PostActivity extends AppCompatActivity implements DatePickerDialog.
                 txtDetailsAddress.getText().toString(),
                 genderChip.getText().toString(),
                 rentTypeChip.getText().toString(),
-                datePicker.getText().toString()
+                datePicker.getText().toString(),
+                userName,
+                userPhnNumber
 
         );
-
-        fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
-
-        userId = fAuth.getCurrentUser().getUid();
 
         String myCurrentDateTime = DateFormat.getDateTimeInstance()
                 .format(Calendar.getInstance().getTime());
