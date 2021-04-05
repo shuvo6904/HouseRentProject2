@@ -10,6 +10,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -100,6 +101,9 @@ public class PostActivity extends AppCompatActivity implements DatePickerDialog.
         });
 
         userInfo();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     private void userInfo() {
@@ -241,4 +245,5 @@ public class PostActivity extends AppCompatActivity implements DatePickerDialog.
 
 
     }
+
 }

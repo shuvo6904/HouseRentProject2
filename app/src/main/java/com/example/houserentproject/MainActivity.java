@@ -166,6 +166,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case R.id.menuResetPassId:
                 startActivity(new Intent(getApplicationContext(), ResetPassActivity.class));
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);
@@ -197,8 +198,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (item.getItemId() == R.id.accountVeriMenuId){
             startActivity(new Intent(this, AccountVerification.class));
-            finish();
         }
+
         return false;
     }
 }

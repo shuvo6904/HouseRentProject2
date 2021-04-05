@@ -50,5 +50,8 @@ public class DetailsActivity extends AppCompatActivity {
                     .load(mBundle.getString("Image"))
                     .into(homeImage);
         }
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 }

@@ -49,6 +49,9 @@ public class AccountVerification extends AppCompatActivity {
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     public void uploadVeriImageBtn(View view) {
@@ -159,6 +162,9 @@ public class AccountVerification extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
                             Toast.makeText(AccountVerification.this, "Back Side Uploaded", Toast.LENGTH_SHORT).show();
+
+                            startActivity(new Intent(AccountVerification.this, MainActivity.class));
+                            finish();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {

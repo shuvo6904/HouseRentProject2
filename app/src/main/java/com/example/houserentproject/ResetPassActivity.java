@@ -27,6 +27,9 @@ public class ResetPassActivity extends AppCompatActivity {
         resetPassword = findViewById(R.id.resetPassId);
         resetConPassword = findViewById(R.id.resetconPassId);
         user = FirebaseAuth.getInstance().getCurrentUser();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     public void btnResetPassSaveId(View view) {

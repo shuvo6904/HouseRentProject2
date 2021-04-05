@@ -12,11 +12,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HouseRentProject">
-        <activity android:name=".AccountVerification"></activity>
-        <activity android:name=".ResetPassActivity" />
-        <activity android:name=".FilterActivity" />
-        <activity android:name=".PostActivity" />
-        <activity android:name=".DetailsActivity" />
+
+        <activity android:name=".AccountVerification"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+        <activity android:name=".ResetPassActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+        <activity android:name=".FilterActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+        <activity android:name=".PostActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+        <activity android:name=".DetailsActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity">
