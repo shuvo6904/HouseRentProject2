@@ -10,12 +10,17 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -25,13 +30,14 @@ import java.io.IOException;
 import java.util.UUID;
 
 public class AccountVerification extends AppCompatActivity {
-
-    //private Button btnFrontChoose, btnBackChoose, btnImageUpload;
+    private TextView textViewEmailVerify;
+    private Button buttonEmailVerify;
 
     private ImageView frontImageView, backImageView;
 
     private Uri frontFilePath, backFilePath;
 
+    private FirebaseAuth fAuth;
     private FirebaseStorage storage;
     private StorageReference storageReference;
 
@@ -40,15 +46,47 @@ public class AccountVerification extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_verification);
 
-        //btnFrontChoose = (Button) findViewById(R.id.chooseFrontImageBtnId);
-        //btnBackChoose = (Button) findViewById(R.id.chooseBacktImageBtnId);
-        //btnImageUpload = (Button) findViewById(R.id.uploadVeriImageBtnId);
+        textViewEmailVerify = findViewById(R.id.emailVerificationTxViewId);
+        buttonEmailVerify = findViewById(R.id.verifyEmailButtonId);
 
         frontImageView = (ImageView) findViewById(R.id.frontImageId);
         backImageView = (ImageView) findViewById(R.id.backImageId);
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+        fAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = fAuth.getCurrentUser();
+
+        if (!user.isEmailVerified()){
+
+            buttonEmailVerify.setVisibility(View.VISIBLE);
+            textViewEmailVerify.setVisibility(View.VISIBLE);
+
+            buttonEmailVerify.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+
+                            Toast.makeText(AccountVerification.this, "Email verification link has been sent , please check your email", Toast.LENGTH_LONG).show();
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                            Log.d("tag", "onFailure : Email not sent " + e.getMessage());
+
+                        }
+                    });
+
+                }
+            });
+
+        }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
