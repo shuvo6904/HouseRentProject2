@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 public class AccountVerification extends AppCompatActivity {
+
     private TextView textViewEmailVerify;
     private Button buttonEmailVerify;
 
@@ -71,7 +72,10 @@ public class AccountVerification extends AppCompatActivity {
                         @Override
                         public void onSuccess(Void aVoid) {
 
-                            Toast.makeText(AccountVerification.this, "Email verification link has been sent , please check your email", Toast.LENGTH_LONG).show();
+                            Toast.makeText(AccountVerification.this, "Email verification link has been sent.\nPlease check your email", Toast.LENGTH_LONG).show();
+
+                           // buttonEmailVerify.setVisibility(View.GONE);
+                           // textViewEmailVerify.setVisibility(View.GONE);
 
                         }
                     }).addOnFailureListener(new OnFailureListener() {

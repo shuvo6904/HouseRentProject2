@@ -118,7 +118,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
 
-                        Toast.makeText(RegisterActivity.this, "Email verification link has been sent , please check your email", Toast.LENGTH_LONG).show();
+                        Toast.makeText(RegisterActivity.this, "Email verification link has been sent.\nPlease check your email", Toast.LENGTH_LONG).show();
 
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -146,7 +146,10 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
 
-                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                //startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                //finish();
+
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                 finish();
 
             }
