@@ -111,25 +111,6 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onSuccess(AuthResult authResult) {
 
-                // send verification link
-
-                FirebaseUser firebaseUser = fAuth.getCurrentUser();
-                firebaseUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-
-                        Toast.makeText(RegisterActivity.this, "Email verification link has been sent.\nPlease check your email", Toast.LENGTH_LONG).show();
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-
-                        Log.d(TAG, "onFailure : Email not sent " + e.getMessage());
-
-                    }
-                });
-
                 userID = fAuth.getCurrentUser().getUid();
 
                 DocumentReference documentReference = fStore.collection("users").document(userID);
@@ -146,10 +127,10 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
 
-                //startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-                //finish();
+                Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
 
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                 finish();
 
             }

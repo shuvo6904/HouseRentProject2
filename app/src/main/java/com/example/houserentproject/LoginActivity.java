@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         loginProgressBar = findViewById(R.id.loginProgressBarId);
     }
 
+
     public void buttonRegister(View view) {
 
         startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
@@ -75,15 +76,19 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(AuthResult authResult) {
 
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                Toast.makeText(LoginActivity.this, "Logged In Successfully", Toast.LENGTH_SHORT).show();
+                loginProgressBar.setVisibility(View.GONE);
+
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 finish();
+
 
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 loginProgressBar.setVisibility(View.GONE);
+                Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -92,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (FirebaseAuth.getInstance().getCurrentUser() != null){
+        if (firebaseAuth.getCurrentUser() != null){
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }
