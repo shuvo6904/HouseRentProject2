@@ -35,30 +35,36 @@ public class MyAdapter extends RecyclerView.Adapter<HomePageViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull HomePageViewHolder holder, int position) {
+        
+        HomePageData model = myHomePageDataList.get(position);
 
         Glide.with(mcontext)
-                .load(myHomePageDataList.get(position).getImage())
+                .load(model.getImage())
                 .into(holder.imageView);
-        // holder.imageView.setImageResource(myHomePageDataList.get(position).getImage());
-        holder.mRentAmount.setText(myHomePageDataList.get(position).getRentAmount());
-        holder.mLocation.setText(myHomePageDataList.get(position).getLocation());
+        // holder.imageView.setImageResource(model.getImage());
+        holder.mRentAmount.setText(model.getRentAmount());
+        holder.mLocation.setText(model.getLocation());
 
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mcontext, DetailsActivity.class);
-                intent.putExtra("Image",myHomePageDataList.get(holder.getAdapterPosition()).getImage());
-                intent.putExtra("RentedAmount", myHomePageDataList.get(holder.getAdapterPosition()).getRentAmount());
-                intent.putExtra("Location", myHomePageDataList.get(holder.getAdapterPosition()).getLocation());
 
-                intent.putExtra("BuildingName", myHomePageDataList.get(holder.getAdapterPosition()).getBuildingName());
-                intent.putExtra("FloorNumber", myHomePageDataList.get(holder.getAdapterPosition()).getFloorNumber());
-                intent.putExtra("DetailsAddress", myHomePageDataList.get(holder.getAdapterPosition()).getDetailsAddress());
-                intent.putExtra("GenderType", myHomePageDataList.get(holder.getAdapterPosition()).getValueOfGender());
-                intent.putExtra("RentType", myHomePageDataList.get(holder.getAdapterPosition()).getValueOfRentType());
-                intent.putExtra("DatePicker", myHomePageDataList.get(holder.getAdapterPosition()).getDatePick());
-                intent.putExtra("NameOfUser", myHomePageDataList.get(holder.getAdapterPosition()).getNameOfUser());
-                intent.putExtra("UserPhnNumber", myHomePageDataList.get(holder.getAdapterPosition()).getPhnNumOfUser());
+                intent.putExtra("model",model);
+
+                //Not required
+//                intent.putExtra("Image",model.getImage());
+//                intent.putExtra("RentedAmount", model.getRentAmount());
+//                intent.putExtra("Location", model.getLocation());
+//
+//                intent.putExtra("BuildingName", model.getBuildingName());
+//                intent.putExtra("FloorNumber", model.getFloorNumber());
+//                intent.putExtra("DetailsAddress", model.getDetailsAddress());
+//                intent.putExtra("GenderType", model.getValueOfGender());
+//                intent.putExtra("RentType", model.getValueOfRentType());
+//                intent.putExtra("DatePicker", model.getDatePick());
+//                intent.putExtra("NameOfUser", model.getNameOfUser());
+//                intent.putExtra("UserPhnNumber", model.getPhnNumOfUser());
 
                 mcontext.startActivity(intent);
             }

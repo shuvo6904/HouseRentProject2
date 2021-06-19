@@ -25,7 +25,6 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    public static final String TAG = "TAG";
     EditText regFullName, regPhnNum, regEmail, regPass, regConPass;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
@@ -122,7 +121,6 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
 
-                        Log.d(TAG, "User Profile is Created for" + userID);
 
                     }
                 });

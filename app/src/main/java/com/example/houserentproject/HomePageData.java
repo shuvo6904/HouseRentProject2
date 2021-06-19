@@ -1,6 +1,8 @@
 package com.example.houserentproject;
 
-public class HomePageData {
+import java.io.Serializable;
+
+public class HomePageData implements Serializable {
     private String rentAmount;
     private String location;
     private String image;

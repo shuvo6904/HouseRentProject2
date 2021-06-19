@@ -50,8 +50,8 @@ public class AccountVerification extends AppCompatActivity {
         textViewEmailVerify = findViewById(R.id.emailVerificationTxViewId);
         buttonEmailVerify = findViewById(R.id.verifyEmailButtonId);
 
-        frontImageView = (ImageView) findViewById(R.id.frontImageId);
-        backImageView = (ImageView) findViewById(R.id.backImageId);
+        frontImageView = findViewById(R.id.frontImageId);
+        backImageView = findViewById(R.id.backImageId);
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
